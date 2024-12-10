@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
-import { getQuotes, logout } from "../utils/api";
+import { getQuotes, getToken, logout, removeToken } from "../utils/api";
 import { useNavigate } from "react-router-dom";
 
-const QuotesListPage = () => {
+const QuotesListPage = ({ onLogout }) => {
   const [quotes, setQuotes] = useState([]);
   const [offset, setOffset] = useState(0);
   const [hasMore, setHasMore] = useState(true);
@@ -19,12 +19,15 @@ const QuotesListPage = () => {
       setQuotes((prev) => [
         ...prev,
         ...newQuotes?.data?.filter((quote) => quote.username === "oreoravi"),
+        // ...newQuotes?.data,
       ]);
   };
 
   const handleLogout = () => {
-    logout();
-    navigate("/");
+    removeToken(); // Remove token
+    onLogout(null);
+    console.log(getToken());
+    navigate("/"); // Redirect to login page
   };
 
   const handleCreateQuote = () => {
