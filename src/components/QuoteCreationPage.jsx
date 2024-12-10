@@ -1,15 +1,21 @@
 import React, { useState, useRef } from "react";
-import { uploadMedia, createQuote } from "../utils/api";
+import { uploadMedia, createQuote, removeToken } from "../utils/api";
 import { useNavigate } from "react-router-dom";
 import "./quoteCreationPage.css"; // Import the external CSS file
 
-const QuoteCreationPage = () => {
+const QuoteCreationPage = ({ onLogout }) => {
   const [text, setText] = useState("");
   const [file, setFile] = useState(null);
   const [isUploading, setIsUploading] = useState(false);
   const [isImageUploaded, setIsImageUploaded] = useState(false);
   const mediaUrlRef = useRef("");
   const navigate = useNavigate();
+
+  const handleLogout = () => {
+    removeToken();
+    onLogout(null);
+    navigate("/");
+  };
 
   const handleImageUpload = async () => {
     if (!file) {
@@ -20,7 +26,7 @@ const QuoteCreationPage = () => {
     setIsUploading(true);
     try {
       const mediaResponse = await uploadMedia(file);
-      mediaUrlRef.current = mediaResponse?.[0]?.url; // Store media URL in useRef
+      mediaUrlRef.current = mediaResponse?.[0]?.url;
       setIsImageUploaded(true);
       alert("Image uploaded successfully!");
     } catch (error) {
@@ -47,6 +53,11 @@ const QuoteCreationPage = () => {
 
   return (
     <div className="quote-container">
+      <div className="top">
+        <button onClick={handleLogout} className="logout-button">
+          Logout
+        </button>
+      </div>
       <h2>Create a Quote</h2>
 
       {/* File Upload */}

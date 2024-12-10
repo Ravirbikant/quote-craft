@@ -1,5 +1,6 @@
 /* Google Font */
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Pacifico&display=swap");
 
 body {
   font-family: "Poppins", sans-serif;
@@ -17,9 +18,19 @@ body {
 
 .top {
   display: flex;
-  justify-content: end;
+  justify-content: space-between;
   margin-top: 10px;
   margin-right: 10px;
+}
+
+.top h2 {
+  font-family: "Pacifico", cursive;
+  font-size: 36px;
+  color: #2c3e50; /* Dark gray color */
+  font-weight: 700;
+  font-style: italic; /* Italic style */
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2); /* Soft shadow effect */
+  margin: 0 20px;
 }
 
 /* Logout button */

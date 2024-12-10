@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { login } from "../utils/api";
-import "./loginPage.css"; // Import the external CSS file
+import "./loginPage.css";
 
 const LoginPage = ({ onLogin }) => {
   const [username, setUsername] = useState("");
@@ -19,6 +19,7 @@ const LoginPage = ({ onLogin }) => {
 
   return (
     <div className="login-container">
+      <h1>Welcome to Quote-craft !</h1>
       <div className="login-box">
         <h2>Login</h2>
         <input

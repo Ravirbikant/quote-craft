@@ -2,11 +2,13 @@ import React, { useState, useEffect } from "react";
 import { getQuotes, getToken, logout, removeToken } from "../utils/api";
 import { useNavigate } from "react-router-dom";
 import "./quotesListPage.css"; // Import the external CSS file
+import Loading from "./Loading";
 
 const QuotesListPage = ({ onLogout }) => {
   const [quotes, setQuotes] = useState([]);
   const [offset, setOffset] = useState(0);
   const [hasMore, setHasMore] = useState(true);
+  const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -14,15 +16,16 @@ const QuotesListPage = ({ onLogout }) => {
   }, [offset]);
 
   const loadQuotes = async () => {
-    const newQuotes = await getQuotes(1000, offset);
+    setLoading(true);
+    const newQuotes = await getQuotes(10, offset);
     if (newQuotes.length === 0) setHasMore(false);
     else setQuotes((prev) => [...prev, ...newQuotes?.data]);
+    setLoading(false);
   };
 
   const handleLogout = () => {
     removeToken(); // Remove token
     onLogout(null);
-    console.log(getToken());
     navigate("/"); // Redirect to login page
   };
 
@@ -33,6 +36,7 @@ const QuotesListPage = ({ onLogout }) => {
   return (
     <div>
       <div className="top">
+        <h2>Quote-craft</h2>
         <button onClick={handleLogout} className="logout-button">
           Logout
         </button>
@@ -42,18 +46,22 @@ const QuotesListPage = ({ onLogout }) => {
           +
         </button>
 
-        {quotes.map((quote, index) => (
-          <div key={index} className="quote-item">
-            <div className="quote-image-container">
-              <img src={quote.mediaUrl} alt="Quote" className="quote-image" />
-              <div className="quote-text-overlay">{quote.text}</div>
+        {loading ? (
+          <Loading />
+        ) : (
+          quotes.map((quote, index) => (
+            <div key={index} className="quote-item">
+              <div className="quote-image-container">
+                <img src={quote.mediaUrl} alt="Quote" className="quote-image" />
+                <div className="quote-text-overlay">{quote.text}</div>
+              </div>
+              <div className="quote-details">
+                <p>By: {quote.username}</p>
+                <p>At: {new Date(quote.createdAt).toLocaleString()}</p>
+              </div>
             </div>
-            <div className="quote-details">
-              <p>By: {quote.username}</p>
-              <p>At: {new Date(quote.createdAt).toLocaleString()}</p>
-            </div>
-          </div>
-        ))}
+          ))
+        )}
 
         {hasMore && (
           <button

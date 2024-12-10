@@ -1,0 +1,39 @@
+/* Center the loading spinner and text */
+.loading-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: #f0f4f8;
+}
+
+/* Spinner design */
+.loading-spinner {
+  border: 8px solid #f3f3f3; /* Light gray background */
+  border-top: 8px solid #3498db; /* Blue spinner */
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  animation: spin 1.5s linear infinite;
+  margin-bottom: 20px;
+}
+
+/* Spinner rotation animation */
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* Loading text style */
+.loading-container h1 {
+  font-size: 24px;
+  color: #333;
+  font-weight: 600;
+  font-family: "Arial", sans-serif;
+  letter-spacing: 1px;
+}

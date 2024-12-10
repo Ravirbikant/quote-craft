@@ -35,7 +35,13 @@ const App = () => {
         />
         <Route
           path="/create-quote"
-          element={token ? <QuoteCreationPage /> : <Navigate to="/" />}
+          element={
+            token ? (
+              <QuoteCreationPage onLogout={setToken} />
+            ) : (
+              <Navigate to="/" />
+            )
+          }
         />
       </Routes>
     </Router>
