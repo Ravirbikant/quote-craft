@@ -1,0 +1,70 @@
+/* Import Google Font */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap");
+
+body {
+  font-family: "Poppins", sans-serif;
+  background-color: #f0f4f8;
+  margin: 0;
+  padding: 0;
+}
+
+/* Center the container */
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: #f0f4f8;
+}
+
+/* Neomorphism styled box */
+.login-box {
+  background: #e0e5ec;
+  border-radius: 20px;
+  padding: 30px;
+  box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.1),
+    -10px -10px 20px rgba(255, 255, 255, 0.7);
+  width: 300px;
+  text-align: center;
+}
+
+.login-box h2 {
+  margin-bottom: 20px;
+}
+
+/* Input fields with neomorphism effect */
+.input-field {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 20px;
+  background: #e0e5ec;
+  border: none;
+  border-radius: 10px;
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.1),
+    -5px -5px 10px rgba(255, 255, 255, 0.7);
+  outline: none;
+}
+
+.input-field:focus {
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3),
+    -5px -5px 10px rgba(255, 255, 255, 0.5);
+}
+
+/* Button with neomorphism effect */
+.login-button {
+  width: 100%;
+  padding: 10px;
+  background-color: rgba(111, 111, 240, 0.829);
+  color: white;
+  border: none;
+  border-radius: 10px;
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2),
+    -5px -5px 10px rgba(255, 255, 255, 0.6);
+  cursor: pointer;
+}
+
+.login-button:hover {
+  background-color: rgba(95, 95, 236, 0.829);
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3),
+    -5px -5px 10px rgba(255, 255, 255, 0.4);
+}

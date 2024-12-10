@@ -1,6 +1,7 @@
 import React, { useState, useRef } from "react";
 import { uploadMedia, createQuote } from "../utils/api";
 import { useNavigate } from "react-router-dom";
+import "./quoteCreationPage.css"; // Import the external CSS file
 
 const QuoteCreationPage = () => {
   const [text, setText] = useState("");
@@ -19,7 +20,6 @@ const QuoteCreationPage = () => {
     setIsUploading(true);
     try {
       const mediaResponse = await uploadMedia(file);
-      console.log(mediaResponse?.[0]?.url);
       mediaUrlRef.current = mediaResponse?.[0]?.url; // Store media URL in useRef
       setIsImageUploaded(true);
       alert("Image uploaded successfully!");
@@ -31,7 +31,6 @@ const QuoteCreationPage = () => {
   };
 
   const handleSubmit = async () => {
-    console.log(mediaUrlRef.current);
     if (!text.trim() || !mediaUrlRef.current) {
       alert("Please provide both quote text and an uploaded image.");
       return;
@@ -47,20 +46,18 @@ const QuoteCreationPage = () => {
   };
 
   return (
-    <div className="p-4">
-      <h2 className="text-xl font-bold mb-4">Create a Quote</h2>
+    <div className="quote-container">
+      <h2>Create a Quote</h2>
 
       {/* File Upload */}
       <input
         type="file"
         onChange={(e) => setFile(e.target.files[0])}
-        className="mb-4"
+        className="file-upload-input"
       />
       <button
         onClick={handleImageUpload}
-        className={`px-4 py-2 ${
-          isUploading ? "bg-gray-500" : "bg-blue-500"
-        } text-white rounded mb-4`}
+        className={`upload-button ${isUploading ? "uploading" : ""}`}
         disabled={isUploading || isImageUploaded}
       >
         {isUploading ? "Uploading..." : "Upload Image"}
@@ -68,16 +65,14 @@ const QuoteCreationPage = () => {
 
       {/* Display Media URL */}
       {isImageUploaded && (
-        <div className="mb-4">
-          <p className="text-green-500">Image uploaded successfully!</p>
+        <div className="uploaded-media">
+          <p className="success-text">Image uploaded successfully!</p>
           <img
             src={mediaUrlRef.current}
             alt="Uploaded"
-            className="w-full h-auto mb-2"
+            className="uploaded-image"
           />
-          <p className="text-sm text-gray-500 break-words">
-            {mediaUrlRef.current}
-          </p>
+          <p className="media-url">{mediaUrlRef.current}</p>
         </div>
       )}
 
@@ -86,16 +81,14 @@ const QuoteCreationPage = () => {
         value={text}
         onChange={(e) => setText(e.target.value)}
         placeholder="Enter your quote text"
-        className="w-full p-2 border rounded mb-4"
+        className="textarea-field"
         disabled={!isImageUploaded} // Disable until image is uploaded
       />
 
       {/* Create Quote */}
       <button
         onClick={handleSubmit}
-        className={`px-4 py-2 ${
-          isImageUploaded ? "bg-green-500" : "bg-gray-500"
-        } text-white rounded`}
+        className={`create-button ${isImageUploaded ? "active" : ""}`}
         disabled={!isImageUploaded || !text.trim()} // Disable until valid input
       >
         Create Quote
