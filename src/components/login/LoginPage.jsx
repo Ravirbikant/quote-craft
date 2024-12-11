@@ -27,14 +27,14 @@ const LoginPage = ({ onLogin }) => {
           placeholder="Username"
           value={username}
           onChange={(e) => setUsername(e.target.value)}
-          className="input-field"
+          className="login-input-field"
         />
         <input
           type="password"
           placeholder="OTP"
           value={otp}
           onChange={(e) => setOtp(e.target.value)}
-          className="input-field"
+          className="login-input-field"
         />
         <button onClick={handleLogin} className="login-button">
           Login
