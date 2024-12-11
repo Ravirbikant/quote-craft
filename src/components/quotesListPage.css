@@ -1,6 +1,7 @@
 /* Google Font */
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Pacifico&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Parisienne&display=swap");
 
 body {
   font-family: "Poppins", sans-serif;
@@ -99,21 +100,35 @@ body {
 /* Text overlay on quote image */
 .quote-text-overlay {
   position: absolute;
-  bottom: 0;
+  top: 0;
   left: 0;
   width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   background: rgba(0, 0, 0, 0.5);
   color: white;
-  padding: 10px;
-  font-size: 14px;
-  border-bottom-left-radius: 10px;
-  border-bottom-right-radius: 10px;
+  font-size: 50px;
+  text-align: center;
+  font-family: "Parisienne", cursive;
 }
 
 /* Quote details */
 .quote-details {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #495057;
+  font-size: 18px;
+}
+
+.quote-details p {
+  margin: 0;
+}
+
+.quote-details p:last-child {
   color: #6c757d;
-  font-size: 14px;
 }
 
 /* Load More button */
