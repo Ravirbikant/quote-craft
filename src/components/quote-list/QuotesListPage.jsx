@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
-import { getQuotes, removeToken } from "../utils/api";
+import { getQuotes, removeToken } from "../../utils/api";
 import { useNavigate } from "react-router-dom";
 import "./quotesListPage.css";
-import Loading from "./Loading";
-import { formatDateTime } from "../utils/commonFunctions";
+import Loading from "../loading/Loading";
+import { formatDateTime } from "../../utils/commonFunctions";
 
 const Quote = ({ quote, index }) => {
   return (
@@ -36,7 +36,6 @@ const QuotesListPage = ({ onLogout }) => {
     const newQuotes = await getQuotes(20, offset);
     if (newQuotes.length === 0) setHasMore(false);
     else setQuotes((prev) => [...prev, ...newQuotes?.data]);
-
     setLoading(false);
   };
 

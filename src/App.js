@@ -6,10 +6,10 @@ import {
   Navigate,
   useNavigate,
 } from "react-router-dom";
-import LoginPage from "./components/LoginPage";
-import { getToken, removeToken } from "./utils/api";
-import QuotesListPage from "./components/QuotesListPage";
-import QuoteCreationPage from "./components/QuoteCreationPage";
+import { getToken } from "./utils/api";
+import QuotesListPage from "./components/quote-list/QuotesListPage";
+import LoginPage from "./components/login/LoginPage";
+import QuoteCreationPage from "./components/quote-creation/QuoteCreationPage";
 
 const App = () => {
   const [token, setToken] = useState(getToken());
