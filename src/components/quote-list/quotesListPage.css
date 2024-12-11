@@ -128,7 +128,7 @@ body {
 .load-more-button {
   width: 100%;
   padding: 10px;
-  background-color: #4caf50;
+  background-color: #534caf;
   color: white;
   border: none;
   border-radius: 10px;
@@ -138,5 +138,5 @@ body {
 }
 
 .load-more-button:hover {
-  background-color: #45a049;
+  background-color: #3f37b0;
 }
