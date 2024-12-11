@@ -55,8 +55,31 @@ h2 {
 }
 
 .file-upload-input {
-  width: fit-content;
+  display: none;
+}
+
+.file-upload-label {
+  padding: 10px 20px;
+  color: 2835a7;
+  font-size: 16px;
+  font-weight: 600;
+  border-radius: 5px;
+  cursor: pointer;
+  text-align: center;
+  border-radius: 10px;
+  border: 1px solid #2835a7;
+  transition: background-color 0.3s ease, transform 0.2s ease;
   margin-bottom: 20px;
+}
+
+.file-upload-label:hover {
+  background-color: #2835a7;
+  color: white;
+}
+
+.file-upload-label:active {
+  background-color: #2835a7;
+  transform: translateY(2px);
 }
 
 /* Input Fields with neomorphism effect */
@@ -152,4 +175,15 @@ h2 {
 .create-button:disabled {
   background: grey;
   cursor: not-allowed;
+}
+
+@media (max-width: 768px) {
+  .quote-container {
+    width: 90%;
+  }
+
+  .input-field,
+  .textarea-field {
+    width: 100%;
+  }
 }
