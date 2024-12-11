@@ -1,4 +1,3 @@
-/* Center the loading spinner and text */
 .loading-container {
   display: flex;
   flex-direction: column;
@@ -8,10 +7,9 @@
   background-color: #f0f4f8;
 }
 
-/* Spinner design */
 .loading-spinner {
-  border: 8px solid #f3f3f3; /* Light gray background */
-  border-top: 8px solid #3498db; /* Blue spinner */
+  border: 8px solid #f3f3f3;
+  border-top: 8px solid #3498db;
   border-radius: 50%;
   width: 50px;
   height: 50px;
@@ -19,7 +17,6 @@
   margin-bottom: 20px;
 }
 
-/* Spinner rotation animation */
 @keyframes spin {
   0% {
     transform: rotate(0deg);
@@ -29,7 +26,6 @@
   }
 }
 
-/* Loading text style */
 .loading-container h1 {
   font-size: 24px;
   color: #333;

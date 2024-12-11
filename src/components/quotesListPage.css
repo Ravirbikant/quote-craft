@@ -1,4 +1,3 @@
-/* Google Font */
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Pacifico&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Parisienne&display=swap");
@@ -49,13 +48,14 @@ body {
   z-index: 2;
   position: fixed;
   bottom: 20px;
+  padding: 10px 20px;
   right: 20px;
-  width: 50px;
+  width: fit-content;
   height: 50px;
   background-color: #4caf50;
+  border-radius: 10px;
   color: white;
-  border-radius: 50%;
-  font-size: 30px;
+  font-size: 16px;
   text-align: center;
   display: flex;
   justify-content: center;
@@ -69,7 +69,6 @@ body {
   background-color: #45a049;
 }
 
-/* Quote item container */
 .quote-item {
   margin-bottom: 20px;
   padding: 20px;
@@ -79,7 +78,6 @@ body {
     -5px -5px 15px rgba(255, 255, 255, 0.7);
 }
 
-/* Quote image container */
 .quote-image-container {
   position: relative;
   width: 100%;
@@ -87,7 +85,6 @@ body {
   margin-bottom: 15px;
 }
 
-/* Quote image styling */
 .quote-image {
   width: 100%;
   height: 100%;
@@ -95,7 +92,6 @@ body {
   border-radius: 10px;
 }
 
-/* Text overlay on quote image */
 .quote-text-overlay {
   position: absolute;
   top: 0;
@@ -113,7 +109,6 @@ body {
   font-family: "Parisienne", cursive;
 }
 
-/* Quote details */
 .quote-details {
   display: flex;
   justify-content: space-between;
@@ -130,7 +125,6 @@ body {
   color: #6c757d;
 }
 
-/* Load More button */
 .load-more-button {
   width: 100%;
   padding: 10px;
