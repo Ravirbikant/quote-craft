@@ -21,10 +21,13 @@ body {
 
 /* Title (h1) styling */
 .login-container h1 {
-  color: #333;
+  color: #2c3e50;
+  font-family: "Pacifico", cursive;
+  font-weight: 700;
+  font-style: italic; /* Italic style */
   font-size: 36px;
   margin-bottom: 20px;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2); /* Shadow effect */
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2); /* Shadow effect */
   position: absolute;
   top: 10%; /* Position the title at the top part of the page */
 }

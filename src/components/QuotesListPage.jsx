@@ -3,6 +3,7 @@ import { getQuotes, getToken, logout, removeToken } from "../utils/api";
 import { useNavigate } from "react-router-dom";
 import "./quotesListPage.css"; // Import the external CSS file
 import Loading from "./Loading";
+import { formatDateTime } from "../utils/commonFunctions";
 
 const QuotesListPage = ({ onLogout }) => {
   const [quotes, setQuotes] = useState([]);
@@ -17,7 +18,7 @@ const QuotesListPage = ({ onLogout }) => {
 
   const loadQuotes = async () => {
     setLoading(true);
-    const newQuotes = await getQuotes(10, offset);
+    const newQuotes = await getQuotes(20, offset);
     if (newQuotes.length === 0) setHasMore(false);
     else setQuotes((prev) => [...prev, ...newQuotes?.data]);
     setLoading(false);
@@ -53,11 +54,11 @@ const QuotesListPage = ({ onLogout }) => {
             <div key={index} className="quote-item">
               <div className="quote-image-container">
                 <img src={quote.mediaUrl} alt="Quote" className="quote-image" />
-                <div className="quote-text-overlay">{quote.text}</div>
+                <div className="quote-text-overlay">"{quote.text}"</div>
               </div>
               <div className="quote-details">
                 <p>By: {quote.username}</p>
-                <p>At: {new Date(quote.createdAt).toLocaleString()}</p>
+                <p>{formatDateTime(quote.createdAt)}</p>
               </div>
             </div>
           ))

@@ -52,58 +52,60 @@ const QuoteCreationPage = ({ onLogout }) => {
   };
 
   return (
-    <div className="quote-container">
+    <div>
       <div className="top">
         <button onClick={handleLogout} className="logout-button">
           Logout
         </button>
       </div>
-      <h2>Create a Quote</h2>
+      <div className="quote-container">
+        <h2>Create a Quote</h2>
 
-      {/* File Upload */}
-      <input
-        type="file"
-        onChange={(e) => setFile(e.target.files[0])}
-        className="file-upload-input"
-      />
-      <button
-        onClick={handleImageUpload}
-        className={`upload-button ${isUploading ? "uploading" : ""}`}
-        disabled={isUploading || isImageUploaded}
-      >
-        {isUploading ? "Uploading..." : "Upload Image"}
-      </button>
+        {/* File Upload */}
+        <input
+          type="file"
+          onChange={(e) => setFile(e.target.files[0])}
+          className="file-upload-input"
+        />
+        <button
+          onClick={handleImageUpload}
+          className={`upload-button ${isUploading ? "uploading" : ""}`}
+          disabled={isUploading || isImageUploaded}
+        >
+          {isUploading ? "Uploading..." : "Upload Image"}
+        </button>
 
-      {/* Display Media URL */}
-      {isImageUploaded && (
-        <div className="uploaded-media">
-          <p className="success-text">Image uploaded successfully!</p>
-          <img
-            src={mediaUrlRef.current}
-            alt="Uploaded"
-            className="uploaded-image"
-          />
-          <p className="media-url">{mediaUrlRef.current}</p>
-        </div>
-      )}
+        {/* Display Media URL */}
+        {isImageUploaded && (
+          <div className="uploaded-media">
+            <p className="success-text">Image uploaded successfully!</p>
+            <img
+              src={mediaUrlRef.current}
+              alt="Uploaded"
+              className="uploaded-image"
+            />
+            <p className="media-url">{mediaUrlRef.current}</p>
+          </div>
+        )}
 
-      {/* Quote Text */}
-      <textarea
-        value={text}
-        onChange={(e) => setText(e.target.value)}
-        placeholder="Enter your quote text"
-        className="textarea-field"
-        disabled={!isImageUploaded} // Disable until image is uploaded
-      />
+        {/* Quote Text */}
+        <textarea
+          value={text}
+          onChange={(e) => setText(e.target.value)}
+          placeholder="Enter your quote text"
+          className="textarea-field"
+          disabled={!isImageUploaded} // Disable until image is uploaded
+        />
 
-      {/* Create Quote */}
-      <button
-        onClick={handleSubmit}
-        className={`create-button ${isImageUploaded ? "active" : ""}`}
-        disabled={!isImageUploaded || !text.trim()} // Disable until valid input
-      >
-        Create Quote
-      </button>
+        {/* Create Quote */}
+        <button
+          onClick={handleSubmit}
+          className={`create-button ${isImageUploaded ? "active" : ""}`}
+          disabled={!isImageUploaded || !text.trim()} // Disable until valid input
+        >
+          Create Quote
+        </button>
+      </div>
     </div>
   );
 };
