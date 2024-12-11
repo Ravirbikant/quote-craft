@@ -18,9 +18,16 @@ const QuotesListPage = ({ onLogout }) => {
 
   const loadQuotes = async () => {
     setLoading(true);
-    const newQuotes = await getQuotes(20, offset);
+    const newQuotes = await getQuotes(1000, offset);
     if (newQuotes.length === 0) setHasMore(false);
-    else setQuotes((prev) => [...prev, ...newQuotes?.data]);
+    // else setQuotes((prev) => [...prev, ...newQuotes?.data]);
+    else {
+      const filteredQuotes = newQuotes?.data.filter(
+        (quote) => quote.username === "ravi"
+      );
+      setQuotes((prev) => [...prev, ...filteredQuotes]);
+    }
+
     setLoading(false);
   };
 

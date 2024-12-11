@@ -61,11 +61,20 @@ const QuoteCreationPage = ({ onLogout }) => {
       <div className="quote-container">
         <h2>Create a Quote</h2>
 
-        {/* File Upload */}
+        {file ? (
+          <p>{file?.name}</p>
+        ) : (
+          <label for="file-upload" className="file-upload-label">
+            Select Image
+          </label>
+        )}
+
         <input
           type="file"
+          id="file-upload"
           onChange={(e) => setFile(e.target.files[0])}
           className="file-upload-input"
+          accept="image/*"
         />
         <button
           onClick={handleImageUpload}
@@ -75,7 +84,6 @@ const QuoteCreationPage = ({ onLogout }) => {
           {isUploading ? "Uploading..." : "Upload Image"}
         </button>
 
-        {/* Display Media URL */}
         {isImageUploaded && (
           <div className="uploaded-media">
             <p className="success-text">Image uploaded successfully!</p>
