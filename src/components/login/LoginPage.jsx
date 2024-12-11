@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { login } from "../utils/api";
+import { login } from "../../utils/api";
 import "./loginPage.css";
 
 const LoginPage = ({ onLogin }) => {
