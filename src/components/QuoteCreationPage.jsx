@@ -1,7 +1,7 @@
 import React, { useState, useRef } from "react";
 import { uploadMedia, createQuote, removeToken } from "../utils/api";
 import { useNavigate } from "react-router-dom";
-import "./quoteCreationPage.css"; // Import the external CSS file
+import "./quoteCreationPage.css";
 
 const QuoteCreationPage = ({ onLogout }) => {
   const [text, setText] = useState("");
@@ -54,6 +54,14 @@ const QuoteCreationPage = ({ onLogout }) => {
   return (
     <div>
       <div className="top">
+        <div
+          style={{ cursor: "pointer" }}
+          onClick={() => {
+            navigate("/quotes");
+          }}
+        >
+          <h2>Quote-craft</h2>
+        </div>
         <button onClick={handleLogout} className="logout-button">
           Logout
         </button>
@@ -96,20 +104,18 @@ const QuoteCreationPage = ({ onLogout }) => {
           </div>
         )}
 
-        {/* Quote Text */}
         <textarea
           value={text}
           onChange={(e) => setText(e.target.value)}
           placeholder="Enter your quote text"
           className="textarea-field"
-          disabled={!isImageUploaded} // Disable until image is uploaded
+          disabled={!isImageUploaded}
         />
 
-        {/* Create Quote */}
         <button
           onClick={handleSubmit}
           className={`create-button ${isImageUploaded ? "active" : ""}`}
-          disabled={!isImageUploaded || !text.trim()} // Disable until valid input
+          disabled={!isImageUploaded || !text.trim()}
         >
           Create Quote
         </button>

@@ -1,7 +1,5 @@
-/* Import Google Font */
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap");
 
-/* Body styling */
 body {
   font-family: "Poppins", sans-serif;
   background-color: #f0f4f8;
@@ -9,7 +7,6 @@ body {
   padding: 0;
 }
 
-/* Container for the quote creation page */
 .quote-container {
   display: flex;
   flex-direction: column;
@@ -26,7 +23,6 @@ body {
   margin-top: 70px;
 }
 
-/* Logout button at the top-right */
 .logout-button {
   position: absolute;
   top: 20px;
@@ -82,7 +78,6 @@ h2 {
   transform: translateY(2px);
 }
 
-/* Input Fields with neomorphism effect */
 .input-field,
 .textarea-field {
   width: 80%;
@@ -102,7 +97,6 @@ h2 {
     -5px -5px 10px rgba(255, 255, 255, 0.5);
 }
 
-/* Upload Button */
 .upload-button {
   padding: 10px 20px;
   background-color: #4caf50;
@@ -129,7 +123,6 @@ h2 {
   cursor: not-allowed;
 }
 
-/* Uploaded Media Section */
 .uploaded-media {
   margin-bottom: 20px;
 }
@@ -150,7 +143,6 @@ h2 {
   word-break: break-word;
 }
 
-/* Create Quote Button */
 .create-button {
   padding: 10px 20px;
   background-color: #e67e22;

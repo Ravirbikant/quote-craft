@@ -1,9 +1,24 @@
 import React, { useState, useEffect } from "react";
-import { getQuotes, getToken, logout, removeToken } from "../utils/api";
+import { getQuotes, removeToken } from "../utils/api";
 import { useNavigate } from "react-router-dom";
-import "./quotesListPage.css"; // Import the external CSS file
+import "./quotesListPage.css";
 import Loading from "./Loading";
 import { formatDateTime } from "../utils/commonFunctions";
+
+const Quote = ({ quote, index }) => {
+  return (
+    <div key={index} className="quote-item">
+      <div className="quote-image-container">
+        <img src={quote.mediaUrl} alt="Quote" className="quote-image" />
+        <div className="quote-text-overlay">"{quote.text}"</div>
+      </div>
+      <div className="quote-details">
+        <p>By: {quote.username}</p>
+        <p>{formatDateTime(quote.createdAt)}</p>
+      </div>
+    </div>
+  );
+};
 
 const QuotesListPage = ({ onLogout }) => {
   const [quotes, setQuotes] = useState([]);
@@ -18,27 +33,21 @@ const QuotesListPage = ({ onLogout }) => {
 
   const loadQuotes = async () => {
     setLoading(true);
-    const newQuotes = await getQuotes(1000, offset);
+    const newQuotes = await getQuotes(20, offset);
     if (newQuotes.length === 0) setHasMore(false);
-    // else setQuotes((prev) => [...prev, ...newQuotes?.data]);
-    else {
-      const filteredQuotes = newQuotes?.data.filter(
-        (quote) => quote.username === "ravi"
-      );
-      setQuotes((prev) => [...prev, ...filteredQuotes]);
-    }
+    else setQuotes((prev) => [...prev, ...newQuotes?.data]);
 
     setLoading(false);
   };
 
   const handleLogout = () => {
-    removeToken(); // Remove token
+    removeToken();
     onLogout(null);
-    navigate("/"); // Redirect to login page
+    navigate("/");
   };
 
   const handleCreateQuote = () => {
-    navigate("/create-quote"); // Navigate to the "Create Quote" page
+    navigate("/create-quote");
   };
 
   return (
@@ -51,24 +60,13 @@ const QuotesListPage = ({ onLogout }) => {
       </div>
       <div className="quotes-container">
         <button onClick={handleCreateQuote} className="create-quote-button">
-          +
+          Create Quote
         </button>
 
         {loading ? (
           <Loading />
         ) : (
-          quotes.map((quote, index) => (
-            <div key={index} className="quote-item">
-              <div className="quote-image-container">
-                <img src={quote.mediaUrl} alt="Quote" className="quote-image" />
-                <div className="quote-text-overlay">"{quote.text}"</div>
-              </div>
-              <div className="quote-details">
-                <p>By: {quote.username}</p>
-                <p>{formatDateTime(quote.createdAt)}</p>
-              </div>
-            </div>
-          ))
+          quotes.map((quote, index) => <Quote quote={quote} index={index} />)
         )}
 
         {hasMore && (
